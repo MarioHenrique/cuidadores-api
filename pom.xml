@@ -5,7 +5,7 @@
 	<groupId>br.com.softcare</groupId>
 	<artifactId>cuidadores-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>cuidadores-api</name>
 	<description>Api de gerenciamento de cuidadores</description>
@@ -51,7 +51,13 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
+		
+	    <dependency>
+		 <groupId>postgresql</groupId>
+		 <artifactId>postgresql</artifactId>
+		 <version>9.1-901.jdbc4</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -73,12 +79,6 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.4.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

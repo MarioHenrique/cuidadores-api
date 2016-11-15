@@ -26,12 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableTransactionManagement
-public class CareGiverApiApplication extends SpringBootServletInitializer{
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CareGiverApiApplication.class);
-	}
+public class CareGiverApiApplication{
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CareGiverApiApplication.class, args);
