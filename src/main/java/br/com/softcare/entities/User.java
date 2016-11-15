@@ -38,7 +38,7 @@ import br.com.softcare.enums.Profile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@Entity
+@Entity(name="usr_api")
 @ApiModel
 public class User {
 
