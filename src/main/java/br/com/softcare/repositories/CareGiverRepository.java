@@ -11,7 +11,7 @@ import br.com.softcare.entities.User;
 @Repository
 public interface CareGiverRepository extends CrudRepository<User,Long>,JpaSpecificationExecutor<User>{
 
-	@Query("select u from User u where u.id=:id")
+	@Query("select u from usr_api u where u.id=:id")
 	public User findById(@Param("id") Long id);
 	
 }
