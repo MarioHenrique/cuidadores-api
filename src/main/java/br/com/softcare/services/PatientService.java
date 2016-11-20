@@ -58,4 +58,11 @@ public class PatientService {
 		return requestService.findAllPatients();
 	}
 
+	public void deleteById(Long id) throws UnauthorizedClientException, UserNotFoundException, ResourceNotFoundException {
+		User userRequest = requestService.getUserRequest();
+		Optional<Patient> patient = Optional.ofNullable(patientRepository.findByIdAndUserCreatorId(id,userRequest.getId()));
+		Patient patientToDelete = patient.orElseThrow(()-> new ResourceNotFoundException(ExceptionMessages.PATIENT_NOT_FOUND));
+		patientRepository.delete(patientToDelete.getId());
+	}
+
 }

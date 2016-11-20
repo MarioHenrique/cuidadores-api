@@ -56,6 +56,13 @@ public class PatientController extends Controller{
 		return patientService.findById(id);
 	}
 	
+	@ResponseStatus(code=HttpStatus.NO_CONTENT)
+	@ApiOperation(value="Deleta um paciente",notes="Deleta um paciente a partir de um id passado")
+	@RequestMapping(value="/api/patient/{id}",method=RequestMethod.DELETE)
+	public void deleteById(@PathVariable Long id) throws UnauthorizedClientException, UserNotFoundException, ResourceNotFoundException{
+		patientService.deleteById(id);
+	}
+	
 	@ResponseStatus(code=HttpStatus.OK)
 	@ApiOperation(value="Atualiza os dados de um paciente",notes="Atualiza os dados de um determinado paciente, apenas o criador do paciente pode alterar suas informações")
 	@RequestMapping(value="/api/patient/{id}",method=RequestMethod.PUT)
