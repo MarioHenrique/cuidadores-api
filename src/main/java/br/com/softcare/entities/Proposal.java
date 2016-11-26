@@ -68,7 +68,6 @@ public class Proposal {
 	private List<ProcedureRecorded> procedureRecorded;
 	
 	@OneToOne
-	@JsonIgnore
 	private User careGiver;
 	
 	@Temporal(TemporalType.DATE)
