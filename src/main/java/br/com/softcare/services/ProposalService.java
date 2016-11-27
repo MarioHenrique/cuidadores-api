@@ -78,9 +78,9 @@ public class ProposalService {
 		return proposal;
 	}
 
-	public List<Proposal> findAll() throws UnauthorizedClientException, UserNotFoundException {
+	public List<Proposal> findAll(ProposalStatus status) throws UnauthorizedClientException, UserNotFoundException {
 		User userRequest = requestService.getUserRequest();
-		return proposalRepository.findAllById(userRequest.getId());
+		return proposalRepository.findAllById(userRequest.getId(),status.ordinal());
 	}
 
 	public Proposal find(Long id) throws ResourceNotFoundException, UnauthorizedClientException, UserNotFoundException {

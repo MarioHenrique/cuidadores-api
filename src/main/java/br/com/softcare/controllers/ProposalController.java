@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ import br.com.softcare.dto.UserInforDto;
 import br.com.softcare.entities.ProcedureRecorded;
 import br.com.softcare.entities.Proposal;
 import br.com.softcare.entities.Symptom;
+import br.com.softcare.enums.ProposalStatus;
 import br.com.softcare.exceptions.NotAllowedOperationException;
 import br.com.softcare.exceptions.ResourceNotFoundException;
 import br.com.softcare.exceptions.UnauthorizedClientException;
@@ -52,8 +54,8 @@ public class ProposalController extends Controller{
 	@ResponseStatus(code=HttpStatus.OK)
 	@ApiOperation(value="Busca proposta",notes="Busca as propostas do usuario logado")
 	@RequestMapping(value="/api/proposal",method=RequestMethod.GET)
-	public List<Proposal> listAllProposal() throws UnauthorizedClientException, UserNotFoundException{
-		return proposalService.findAll();
+	public List<Proposal> listAllProposal(@RequestParam(name="status",required=false) ProposalStatus status) throws UnauthorizedClientException, UserNotFoundException{
+		return proposalService.findAll(status==null?ProposalStatus.PENDING:status);
 	}
 	
 	@ResponseStatus(code=HttpStatus.OK)
