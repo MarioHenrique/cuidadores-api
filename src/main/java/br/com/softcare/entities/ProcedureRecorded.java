@@ -2,6 +2,7 @@ package br.com.softcare.entities;
 
 import java.util.Date;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import br.com.softcare.converters.DateToStringConverter;
-import br.com.softcare.converters.StringToDateConverter;
+import br.com.softcare.converters.DateTimeToStringConverter;
+import br.com.softcare.converters.StringToDateTimeConverter;
 import br.com.softcare.messages.BeanValidatorMessages;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -47,14 +48,14 @@ public class ProcedureRecorded {
 	private String procedureLocation;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonSerialize(converter=DateToStringConverter.class)
-	@JsonDeserialize(converter=StringToDateConverter.class)
+	@JsonSerialize(converter=DateTimeToStringConverter.class)
+	@JsonDeserialize(converter=StringToDateTimeConverter.class)
 	@NotNull(message=BeanValidatorMessages.EMPTY_DATE)
 	private Date procedureInitialDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonSerialize(converter=DateToStringConverter.class)
-	@JsonDeserialize(converter=StringToDateConverter.class)
+	@JsonSerialize(converter=DateTimeToStringConverter.class)
+	@JsonDeserialize(converter=StringToDateTimeConverter.class)
 	@NotNull(message=BeanValidatorMessages.EMPTY_DATE)
 	private Date procedureFinalDate;
 
