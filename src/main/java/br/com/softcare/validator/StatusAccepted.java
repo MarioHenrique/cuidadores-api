@@ -22,4 +22,9 @@ public class StatusAccepted implements StatusChange{
 		return true;
 	}
 
+	@Override
+	public boolean finish() {
+		return false;
+	}
+
 }

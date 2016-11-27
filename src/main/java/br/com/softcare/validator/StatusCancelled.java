@@ -21,5 +21,10 @@ public class StatusCancelled implements StatusChange{
 	public boolean initialize() {
 		return false;
 	}
+	
+	@Override
+	public boolean finish() {
+		return false;
+	}
 
 }

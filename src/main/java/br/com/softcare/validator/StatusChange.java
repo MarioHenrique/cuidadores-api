@@ -6,5 +6,6 @@ public interface StatusChange {
 	public boolean denie();
 	public boolean cancel();
 	public boolean initialize();
+	public boolean finish();
 	
 }

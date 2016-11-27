@@ -1,6 +1,6 @@
 package br.com.softcare.validator;
 
-public class StatusDenied implements StatusChange{
+public class StatusChangeFinish implements StatusChange{
 
 	@Override
 	public boolean accept() {
@@ -21,7 +21,7 @@ public class StatusDenied implements StatusChange{
 	public boolean initialize() {
 		return false;
 	}
-	
+
 	@Override
 	public boolean finish() {
 		return false;

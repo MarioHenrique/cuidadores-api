@@ -25,6 +25,7 @@ import br.com.softcare.repositories.ProposalRepository;
 import br.com.softcare.validator.StatusAccepted;
 import br.com.softcare.validator.StatusCancelled;
 import br.com.softcare.validator.StatusChange;
+import br.com.softcare.validator.StatusChangeFinish;
 import br.com.softcare.validator.StatusDenied;
 import br.com.softcare.validator.StatusInitialized;
 import br.com.softcare.validator.StatusPending;
@@ -108,7 +109,7 @@ public class ProposalService {
 			UserNotFoundException, ResourceNotFoundException, NotAllowedOperationException {
 		User userRequest = requestService.getUserRequest();
 		List<ProposalStatus> responsableStatusAllowed = Arrays.asList(ProposalStatus.INITIALIZED,
-				ProposalStatus.CANCELED);
+				ProposalStatus.CANCELED,ProposalStatus.FINISHED);
 		List<ProposalStatus> careGiverStatusAllowed = Arrays.asList(ProposalStatus.ACEPTED, ProposalStatus.DENIED,
 				ProposalStatus.CANCELED);
 
@@ -153,6 +154,9 @@ public class ProposalService {
 		case INITIALIZED:
 			update = executeValidationChange(new StatusInitialized(), toUpdate);
 			break;
+		case FINISHED:
+			update = executeValidationChange(new StatusChangeFinish(), toUpdate);
+			break;
 		default:
 			update = false;
 		}
@@ -176,6 +180,9 @@ public class ProposalService {
 			break;
 		case INITIALIZED:
 			response = status.initialize();
+			break;
+		case FINISHED:
+			response = status.finish();
 			break;
 		default:
 			response = false;
