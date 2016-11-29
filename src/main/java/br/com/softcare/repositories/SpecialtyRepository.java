@@ -17,5 +17,5 @@ public interface SpecialtyRepository extends CrudRepository<Specialty,Long> {
 
 	@Query("select s from Specialty s where s.id=:id and s.careGiver.id=:userId")
 	public Specialty findSpecialty(@Param("userId")Long userId,@Param("id") Long id);
-
+	
 }

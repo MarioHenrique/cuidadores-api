@@ -58,7 +58,9 @@ public class SpecialtyService {
 		specialtyRepository.save(specialty);
 		return specialty;
 	}
-	
-	
+
+	public List<Specialty> findAllByCareGiver(Long cuidadorId) {
+		return specialtyRepository.findAllSpecialty(cuidadorId);
+	}
 	
 }

@@ -92,6 +92,14 @@ public class CareGiverController extends Controller{
 		return specialtyService.find(id);
 	}
 	
+	@ResponseStatus(code=HttpStatus.OK)
+	@ApiOperation(value="Busca de especalidades",notes="Realiza a busca de todas as especialidades de um determiando cuidador")
+	@RequestMapping(value="/api/caregiver/{cuidadorId}/specialty",method=RequestMethod.GET)
+	public List<Specialty> getSpecialtyByCareGiver(@PathVariable Long cuidadorId) throws UnauthorizedClientException, UserNotFoundException, ResourceNotFoundException{
+		return specialtyService.findAllByCareGiver(cuidadorId);
+	}
+	
+	
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)
 	@ApiOperation(value="Remove uma especialidade",notes="Faz a remoção de uma especialidade")
 	@RequestMapping(value="/api/caregiver/specialty/{id}",method=RequestMethod.DELETE)
